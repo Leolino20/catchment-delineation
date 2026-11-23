@@ -311,7 +311,7 @@ def do_catchment_analysis():
     print(f'Pixels inside polygon: {poly_mask.sum():,}')
 
     # 2) per-pixel catchment size (upstream cells / area), only inside the polygon
-    acc_arr = np.ma.filled(accumulation, np.nan).astype('float64') # convert the raster into into a numopy array
+    acc_arr = np.ma.filled(accumulation, np.nan).astype('float64') # convert the raster into into a numpy array
     catch_cells = np.where(poly_mask, acc_arr, np.nan) # takes the accumulation cells that align with the polygon
     catch_km2 = catch_cells * cell_area_m2 / 1e6
 
